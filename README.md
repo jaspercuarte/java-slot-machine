@@ -5,10 +5,10 @@ A simple terminal-based Slot Machine game implemented in Java. Players start wit
 
 ## Installation
 1. Clone the repository: 
->   - git clone https://github.com/hekigyokuu/java-slot-machine.git
+> git clone https://github.com/hekigyokuu/java-slot-machine.git
 2. Navigate to the project directory:
->   - cd slot-machine
+> cd slot-machine
 3. Compile the Java code:
->   - javac SlotMachine.java
+> javac SlotMachine.java
 4. Run the program:
->   - java SlotMachine
+> java SlotMachine
