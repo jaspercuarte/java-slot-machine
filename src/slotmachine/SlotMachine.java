@@ -80,7 +80,6 @@ public class SlotMachine {
         for (int i = 0; i < results.length; i++) {
             results[i] = symbols[rand.nextInt(symbols.length)];
         }
-
         System.out.println("\n   |============================|");
         System.out.println("  ||==||||||||||||||||||||||||==|");
 
@@ -90,7 +89,6 @@ public class SlotMachine {
         } else {
             System.out.println(" |||==****   YOU LOSE!   ****==|");
         }
-
         System.out.println("||||==*********************==||");
         System.out.print("||||==*  ");
 
@@ -100,7 +98,6 @@ public class SlotMachine {
                 System.out.print("  |  ");
             }
         }
-
         System.out.println("  *||");
         System.out.println("||||============================|");
         System.out.println("||||============================|");
