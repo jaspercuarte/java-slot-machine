@@ -5,14 +5,7 @@ import java.util.Random;
 
 public class SlotMachine {
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        Random rand = new Random();
-
-        String[] symbols = {"🍒", "🍀", "🏆"};
-        double balance = 100;
-        double bet;
-
+    static void displayAsciiTown() {
         System.out.println("                                        .");
         System.out.println("              . .                     -:-             .  .  .");
         System.out.println("            .'.:,'.        .  .  .     ' .           . \\ | / .");
@@ -30,7 +23,16 @@ public class SlotMachine {
         System.out.println(" _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ |= _ _:_ _ =| _ _ _ _ _ _ _ _ _ _ _ _");
         System.out.println("                                     |=    :    =|                        ");
         System.out.println("_____________________________________L___________J________________________");
+    }
 
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Random rand = new Random();
+
+        String[] symbols = {"🍒", "🍀", "🏆"};
+
+        double balance = 100;
+        double bet;
         while (true) {
             System.out.print("\nDo you want to continue in Java Slot Machine (y/n): ");
             String choice = sc.nextLine();
