@@ -59,10 +59,57 @@ public class SlotMachine {
         }
     }
 
+    static int betCondition(double balance, double bet) {
+        if (bet == 0) {
+            System.out.println("Withdrawing $" + balance);
+            System.out.println("Thank you for playing!");
+            return -1;
+        } else if (bet < 0) {
+            System.out.println("Bet must be above 0!");
+            return 0;
+        } else if (bet > balance) {
+            System.out.println("Insufficient funds. Please enter a smaller amount.");
+            return 0;
+        }
+        return 1;
+    }
+
+    static double runSpinAndCheck(String[] symbols, double balance, double bet) {
+        Random rand = new Random();
+        String[] results = new String[3];
+        for (int i = 0; i < results.length; i++) {
+            results[i] = symbols[rand.nextInt(symbols.length)];
+        }
+
+        System.out.println("\n   |============================|");
+        System.out.println("  ||==||||||||||||||||||||||||==|");
+
+        if (results[0].equals(results[1]) && results[0].equals(results[2])) {
+            System.out.println(" |||==****   YOU WIN!    ****==|");
+            balance += (bet * 5);
+        } else {
+            System.out.println(" |||==****   YOU LOSE!   ****==|");
+        }
+
+        System.out.println("||||==*********************==||");
+        System.out.print("||||==*  ");
+
+        for (int i = 0; i < results.length; i++) {
+            System.out.print(results[i]);
+            if (i < results.length - 1) {
+                System.out.print("  |  ");
+            }
+        }
+
+        System.out.println("  *||");
+        System.out.println("||||============================|");
+        System.out.println("||||============================|");
+
+        return balance;
+    }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Random rand = new Random();
 
         String[] symbols = {"🍒", "🍀", "🏆"};
 
@@ -75,49 +122,16 @@ public class SlotMachine {
             System.out.println("\nCurrent Balance: $" + balance + " (enter 0 to payout/exit)");
 
             double bet = betHandling(sc);
+            int condition = betCondition(balance, bet);
 
-            if (bet == 0) {
-                System.out.println("Withdrawing $" + balance);
-                System.out.println("Thank you for playing!");
+            if (condition == -1) {
                 break;
-            } else if (bet < 0) {
-                System.out.println("Bet must be above 0!");
-                continue;
-            } else if (bet > balance) {
-                System.out.println("Insufficient funds. Please enter a smaller amount.");
+            } else if (condition == 0) {
                 continue;
             }
 
             balance -= bet;
-
-            String[] results = new String[3];
-            for (int i = 0; i < results.length; i++) {
-                results[i] = symbols[rand.nextInt(symbols.length)];
-            }
-
-            System.out.println("\n   |============================|");
-            System.out.println("  ||==||||||||||||||||||||||||==|");
-
-            if (results[0].equals(results[1]) && results[0].equals(results[2])) {
-                System.out.println(" |||==****   YOU WIN!    ****==|");
-                balance += (bet * 5);
-            } else {
-                System.out.println(" |||==****   YOU LOSE!   ****==|");
-            }
-
-            System.out.println("||||==*********************==||");
-            System.out.print("||||==*  ");
-
-            for (int i = 0; i < results.length; i++) {
-                System.out.print(results[i]);
-                if (i < results.length - 1) {
-                    System.out.print("  |  ");
-                }
-            }
-
-            System.out.println("  *||");
-            System.out.println("||||============================|");
-            System.out.println("||||============================|");
+            balance = runSpinAndCheck(symbols, balance, bet);
 
             if (balance <= 0) {
                 System.out.println("You are out of money! Game over.");
