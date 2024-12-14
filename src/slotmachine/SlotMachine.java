@@ -43,6 +43,23 @@ public class SlotMachine {
         }
     }
 
+    static boolean getUserConfirmation(Scanner sc) {
+        while (true) {
+            System.out.print("\nDo you want to continue in Java Slot Machine (y/n): ");
+            String choice = sc.nextLine();
+
+            if (choice.equalsIgnoreCase("y")) {
+                return true;
+            } else if (choice.equalsIgnoreCase("n")) {
+                System.out.println("Terminating...");
+                System.exit(0);
+            } else {
+                System.out.println("Invalid input!");
+            }
+        }
+    }
+
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
@@ -50,19 +67,9 @@ public class SlotMachine {
         String[] symbols = {"🍒", "🍀", "🏆"};
 
         double balance = 100;
-        while (true) {
-            System.out.print("\nDo you want to continue in Java Slot Machine (y/n): ");
-            String choice = sc.nextLine();
 
-            if (choice.equalsIgnoreCase("y")) {
-                break;
-            } else if (choice.equalsIgnoreCase("n")) {
-                return;
-            } else {
-                System.out.println("Invalid input!");
-            }
-        }
-
+        displayAsciiTown();
+        getUserConfirmation(sc);
 
         while (true) {
             System.out.println("\nCurrent Balance: $" + balance + " (enter 0 to payout/exit)");
