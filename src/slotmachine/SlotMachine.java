@@ -25,6 +25,24 @@ public class SlotMachine {
         System.out.println("_____________________________________L___________J________________________");
     }
 
+    static double betHandling(Scanner sc) {
+        double bet;
+        while (true) {
+            System.out.print("Bet: $");
+            if (!sc.hasNextDouble()) {
+                sc.nextLine();
+                System.out.println("Invalid input. Please enter a valid number.");
+            } else {
+                bet = sc.nextDouble();
+                if (bet <= 0) {
+                    System.out.println("Bet must be greater than 0. Please try again.");
+                } else {
+                    return bet;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Random rand = new Random();
@@ -32,7 +50,6 @@ public class SlotMachine {
         String[] symbols = {"🍒", "🍀", "🏆"};
 
         double balance = 100;
-        double bet;
         while (true) {
             System.out.print("\nDo you want to continue in Java Slot Machine (y/n): ");
             String choice = sc.nextLine();
@@ -46,17 +63,11 @@ public class SlotMachine {
             }
         }
 
+
         while (true) {
             System.out.println("\nCurrent Balance: $" + balance + " (enter 0 to payout/exit)");
-            System.out.print("Bet: $");
 
-            if (!sc.hasNextDouble()) {
-                sc.nextLine();
-                System.out.println("Invalid input. Please enter a valid number.");
-                continue;
-            }
-
-            bet = sc.nextDouble();
+            double bet = betHandling(sc);
 
             if (bet == 0) {
                 System.out.println("Withdrawing $" + balance);
