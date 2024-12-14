@@ -1,14 +1,14 @@
 # Terminal-based Java Slot Machine (https://github.com/hekigyokuu/java-slot-machine)
 
 ## Description
-A simple terminal-based Java Slot Machine game consisting of 3 symbols with starting balance of $100.00.
+A simple terminal-based Slot Machine game implemented in Java. Players start with a balance of $100.00 and can spin the reels to try their luck with 3 randomly generated symbols.
 
 ## Installation
-Clone the repository: 
+1. Clone the repository: 
 - git clone https://github.com/yourusername/slot-machine.git
-Navigate to the project directory:
+2. Navigate to the project directory:
 - cd slot-machine
-Compile the Java code:
+3. Compile the Java code:
 - javac SlotMachine.java
-Run the program:
+4. Run the program:
 - java SlotMachine
